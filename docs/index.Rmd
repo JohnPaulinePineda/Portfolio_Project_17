@@ -747,7 +747,7 @@ dim(PMA_PreModelling_Test)
 |
 | Exploratory data analysis:
 |
-| **[A]** Numeric variables which demonstrated differential relationships with the <span style="color: #FF0000">Class</span> response variable include:
+| **[A]** Numeric variables which demonstrated differential relationships with the <span style="color: #FF0000">Class</span> response variable between its <span style="color: #FF0000">Control</span> and <span style="color: #FF0000">Impaired</span> levels include:
 |      **[A.1]** <span style="color: #FF0000">Fibrinogen</span> variable (numeric)
 |      **[A.2]** <span style="color: #FF0000">GRO_alpha</span> variable (numeric)
 |      **[A.3]** <span style="color: #FF0000">FAS</span> variable (numeric)
@@ -1568,7 +1568,6 @@ NB_RFE_Test_ROC <- roc(response = NB_RFE_Test$NB_RFE_Observed,
 | **[D]** The cross-validated model performance of the final model is summarized as follows:
 |      **[D.1]** Final model configuration variable subset=21
 |      **[D.2]** ROC Curve AUC = 0.80296
-|
 |
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.86921
