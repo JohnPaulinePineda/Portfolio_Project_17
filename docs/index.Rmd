@@ -1974,6 +1974,8 @@ print(ROCCurveAUC_Summary, row.names=FALSE)
 | **[Article]** [Linear Discriminant Analysis, Explained](https://yangxiaozhou.github.io/data/2019/10/02/linear-discriminant-analysis.html) by Xiaozhou Yang
 | **[Article]** [Classification Tree](https://support.bccvl.org.au/support/solutions/articles/6000083204-classification-tree) by BCCVL Team
 | **[Article]** [K-Nearest Neighbors (KNN) Classification with scikit-learn](https://www.datacamp.com/tutorial/k-nearest-neighbor-classification-scikit-learn) by Datacamp Team
+| **[Article]** [Mathematical explanation of K-Nearest Neighbour](https://www.geeksforgeeks.org/mathematical-explanation-of-k-nearest-neighbour/) by Geeks for Geeks Team
+| **[Article]** [What Is The K-Nearest Neighbors Algorithm?](https://www.ibm.com/topics/knn) by IBM Team
 | **[Article]** [Random Forest](https://support.bccvl.org.au/support/solutions/articles/6000083217-random-forest) by BCCVL Team
 | **[Article]** [Generalized Linear Model](https://support.bccvl.org.au/support/solutions/articles/6000083213-generalized-linear-model) by BCCVL Team
 | **[Publication]** [Bagging Predictors ](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) by Leo Breiman (Machine Learning)
