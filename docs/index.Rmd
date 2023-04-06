@@ -854,6 +854,8 @@ EDA.Bar.Source.FactorVar.Prop <- rbind(EDA.PropTable.Function("E2"),
 
 ###  1.5.1 Random Forest Without RFE (RF_FULL)
 |
+| [Random Forest](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) is an ensemble learning method made up of a large set of small decision trees called estimators, with each producing its own prediction. The random forest model aggregates the predictions of the estimators to produce a more accurate prediction. The algorithm involves bootstrap aggregating (where smaller subsets of the training data are repeatedly subsampled with replacement), random subspacing (where a subset of features are sampled and used to train each individual estimator), estimator training (where unpruned decision trees are formulated for each estimator) and inference by aggregating the predictions of all estimators.
+|
 | **[A]** The random forest model from the  <mark style="background-color: #CCECFF">**randomForest**</mark> package was implemented without recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
 | **[B]** The model contains 1 hyperparameter:
@@ -1330,6 +1332,8 @@ KNN_FULL_Test_ROC <- roc(response = KNN_FULL_Test$KNN_FULL_Observed,
 ```
 
 ###  1.5.7 Random Forest With RFE (RF_RFE)
+|
+| [Random Forest](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) is an ensemble learning method made up of a large set of small decision trees called estimators, with each producing its own prediction. The random forest model aggregates the predictions of the estimators to produce a more accurate prediction. The algorithm involves bootstrap aggregating (where smaller subsets of the training data are repeatedly subsampled with replacement), random subspacing (where a subset of features are sampled and used to train each individual estimator), estimator training (where unpruned decision trees are formulated for each estimator) and inference by aggregating the predictions of all estimators.
 |
 | **[A]** The random forest model from the  <mark style="background-color: #CCECFF">**randomForest**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1953,6 +1957,7 @@ print(ROCCurveAUC_Summary, row.names=FALSE)
 | **[Article]** [Classification Tree](https://support.bccvl.org.au/support/solutions/articles/6000083204-classification-tree) by BCCVL Team
 | **[Article]** [Random Forest](https://support.bccvl.org.au/support/solutions/articles/6000083217-random-forest) by BCCVL Team
 | **[Article]** [Generalized Linear Model](https://support.bccvl.org.au/support/solutions/articles/6000083213-generalized-linear-model) by BCCVL Team
+| **[Publication]** [Bagging Predictors ](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) by Leo Breiman (Machine Learning)
 | **[Course]** [Applied Data Mining and Statistical Learning](https://online.stat.psu.edu/stat508/) by Penn State Eberly College of Science
 | **[Course]** [Regression Methods](https://online.stat.psu.edu/stat501/) by Penn State Eberly College of Science
 | **[Course]** [Applied Regression Analysis](https://online.stat.psu.edu/stat462/) by Penn State Eberly College of Science
