@@ -1057,6 +1057,8 @@ LDA_FULL_Test_ROC <- roc(response = LDA_FULL_Test$LDA_FULL_Observed,
 
 ###  1.5.3 Naive Bayes Without RFE (NB_FULL)
 |
+| [Naive Bayes Classifier](https://www.jstor.org/stable/2682766) categorizes instances by applying Bayes Theorem in determining posterior probabilities as conditioned by the likelihood of features, and prior probabilities pertaining to both events and features. The algorithm naively assumes independence between features and assigns the same weight (degree of significance) to all given features.
+|
 | **[A]** The naive bayes model from the  <mark style="background-color: #CCECFF">**klaR**</mark> package was implemented without recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
 | **[B]** The model contains 3 hyperparameters:
@@ -1271,6 +1273,8 @@ SVM_R_FULL_Test_ROC <- roc(response = SVM_R_FULL_Test$SVM_R_FULL_Observed,
 ```
 
 ###  1.5.6 K-Nearest Neighbors Without RFE (KNN_FULL)
+|
+| [K-Nearest Neighbors](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) works on the similarity principle which assumes that every data point falling in near to each other belong to the same class. The algorithm therefore assigns an unclassified sample point the classification of the nearest of a set of previously classified points.
 |
 | **[A]** The k-nearest neighbors model was implemented without recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1487,6 +1491,8 @@ LDA_RFE_Test_ROC <- roc(response = LDA_RFE_Test$LDA_RFE_Observed,
 ```
 
 ###  1.5.9 Naive Bayes With RFE (NB_RFE)
+|
+| [Naive Bayes Classifier](https://www.jstor.org/stable/2682766) categorizes instances by applying Bayes Theorem in determining posterior probabilities as conditioned by the likelihood of features, and prior probabilities pertaining to both events and features. The algorithm naively assumes independence between features and assigns the same weight (degree of significance) to all given features.
 |
 | **[A]** The naive bayes model from the  <mark style="background-color: #CCECFF">**klaR**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1719,6 +1725,8 @@ SVM_R_RFE_Test_ROC <- roc(response = SVM_R_RFE_Test$SVM_R_RFE_Observed,
 ```
 
 ###  1.5.12 K-Nearest Neighbors With RFE (KNN_RFE)
+|
+| [K-Nearest Neighbors](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) works on the similarity principle which assumes that every data point falling in near to each other belong to the same class. The algorithm therefore assigns an unclassified sample point the classification of the nearest of a set of previously classified points.
 |
 | **[A]** The k-nearest neighbors model was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1959,16 +1967,20 @@ print(ROCCurveAUC_Summary, row.names=FALSE)
 | **[Article]** [4 Types of Classification Tasks in Machine Learning](https://machinelearningmastery.com/types-of-classification-in-machine-learning/) by Jason Brownlee
 | **[Article]** [Spot-Check Classification Machine Learning Algorithms in Python with scikit-learn](https://machinelearningmastery.com/spot-check-classification-machine-learning-algorithms-python-scikit-learn/) by Jason Brownlee
 | **[Article]** [An Introduction to Naive Bayes Algorithm for Beginners](https://www.turing.com/kb/an-introduction-to-naive-bayes-algorithm-for-beginners) by Turing Team
+| **[Article]** [How Naive Bayes Algorithm Works?](https://www.machinelearningplus.com/predictive-modeling/how-naive-bayes-algorithm-works-with-example-and-full-code/#8buildinganaivebayesclassifierinr) by Selva Prabhakaran
+| **[Article]** [Naive Bayes Classifiers](https://www.geeksforgeeks.org/naive-bayes-classifiers/) by Geeks For Geeks Team
 | **[Article]** [Machine Learning Tutorial: A Step-by-Step Guide for Beginners](http://www.feat.engineering/index.html) by Mayank Banoula
 | **[Article]** [Discriminant Analysis Essentials in R](http://www.sthda.com/english/articles/36-classification-methods-essentials/146-discriminant-analysis-essentials-in-r/) by Alboukadel Kassambara
 | **[Article]** [Linear Discriminant Analysis, Explained](https://yangxiaozhou.github.io/data/2019/10/02/linear-discriminant-analysis.html) by Xiaozhou Yang
 | **[Article]** [Classification Tree](https://support.bccvl.org.au/support/solutions/articles/6000083204-classification-tree) by BCCVL Team
+| **[Article]** [K-Nearest Neighbors (KNN) Classification with scikit-learn](https://www.datacamp.com/tutorial/k-nearest-neighbor-classification-scikit-learn) by Datacamp Team
 | **[Article]** [Random Forest](https://support.bccvl.org.au/support/solutions/articles/6000083217-random-forest) by BCCVL Team
 | **[Article]** [Generalized Linear Model](https://support.bccvl.org.au/support/solutions/articles/6000083213-generalized-linear-model) by BCCVL Team
 | **[Publication]** [Bagging Predictors ](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) by Leo Breiman (Machine Learning)
 | **[Publication]** [The Use of Multiple Measurements in Taxonomic Problems](https://www.semanticscholar.org/paper/THE-USE-OF-MULTIPLE-MEASUREMENTS-IN-TAXONOMIC-Fisher/ab21376e43ac90a4eafd14f0f02a0c87502b6bbf) by Ronald Fisher (Annals of Human Genetics)
 | **[Publication]** [The Origins of Logistic Regression](http://dx.doi.org/10.2139/ssrn.360300) by JS Cramer (Econometrics eJournal)
 | **[Publication]** [Who Discovered Bayes's Theorem?](https://www.jstor.org/stable/2682766) by Stephen Stigler (The American Statistician)
+| **[Publication]** [Nearest Neighbor Pattern Classification](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) by T Cover and P Hart (Transactions of Information Theory)
 | **[Course]** [Applied Data Mining and Statistical Learning](https://online.stat.psu.edu/stat508/) by Penn State Eberly College of Science
 | **[Course]** [Regression Methods](https://online.stat.psu.edu/stat501/) by Penn State Eberly College of Science
 | **[Course]** [Applied Regression Analysis](https://online.stat.psu.edu/stat462/) by Penn State Eberly College of Science
