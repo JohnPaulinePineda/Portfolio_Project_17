@@ -1208,6 +1208,8 @@ LR_FULL_Test_ROC <- roc(response = LR_FULL_Test$LR_FULL_Observed,
 
 ###  1.5.5 Support Vector Machine - Radial Basis Function Kernel Without RFE (SVM_R_FULL)
 |
+| [Support Vector Machine](http://www.cs.cmu.edu/~pakyan/compbio/references/Drucker_NIPS_1996.pdf) plots each observation in an N-dimensional space corresponding to the number of features in the data set and finds a hyperplane that maximally separates the different classes by a maximally large margin (which is defined as the distance between the hyperplane and the closest data points from each class). The algorithm applies kernel transformation by mapping non-linearly separable data using the similarities between the points in a high-dimensional feature space for improved discrimination.
+|
 | **[A]** The support vector machine (radial basis function kernel) model from the  <mark style="background-color: #CCECFF">**kernlab**</mark> package was implemented without recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
 | **[B]** The model contains 2 hyperparameters:
@@ -1642,6 +1644,8 @@ LR_RFE_Test_ROC <- roc(response = LR_RFE_Test$LR_RFE_Observed,
 ```
 
 ###  1.5.11 Support Vector Machine - Radial Basis Function Kernel With RFE (SVM_R_RFE)
+|
+| [Support Vector Machine](http://www.cs.cmu.edu/~pakyan/compbio/references/Drucker_NIPS_1996.pdf) plots each observation in an N-dimensional space corresponding to the number of features in the data set and finds a hyperplane that maximally separates the different classes by a maximally large margin (which is defined as the distance between the hyperplane and the closest data points from each class). The algorithm applies kernel transformation by mapping non-linearly separable data using the similarities between the points in a high-dimensional feature space for improved discrimination.
 |
 | **[A]** The support vector machine (radial basis function kernel) model from the  <mark style="background-color: #CCECFF">**kernlab**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
