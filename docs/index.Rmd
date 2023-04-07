@@ -1345,6 +1345,8 @@ KNN_FULL_Test_ROC <- roc(response = KNN_FULL_Test$KNN_FULL_Observed,
 |
 | [Random Forest](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) is an ensemble learning method made up of a large set of small decision trees called estimators, with each producing its own prediction. The random forest model aggregates the predictions of the estimators to produce a more accurate prediction. The algorithm involves bootstrap aggregating (where smaller subsets of the training data are repeatedly subsampled with replacement), random subspacing (where a subset of features are sampled and used to train each individual estimator), estimator training (where unpruned decision trees are formulated for each estimator) and inference by aggregating the predictions of all estimators.
 |
+| [Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) is a wrapper-style feature selection algorithm which searches for a subset of features by starting with all features in the training data set and successfully removing features until the desired number remains. The algorithm repeatedly fits a given machine learning algorithm used in the core of the model, ranks features by importance, discards the least important features, and re-fits the model. Features are scored either using importance scores relevant to the provided machine learning model or by applying statistical methods.
+|
 | **[A]** The random forest model from the  <mark style="background-color: #CCECFF">**randomForest**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
 | **[B]** The model contains 1 hyperparameter:
@@ -1421,6 +1423,8 @@ RF_RFE_Test_ROC <- roc(response = RF_RFE_Test$RF_RFE_Observed,
 |
 | [Linear Discriminant Analysis](https://www.semanticscholar.org/paper/THE-USE-OF-MULTIPLE-MEASUREMENTS-IN-TAXONOMIC-Fisher/ab21376e43ac90a4eafd14f0f02a0c87502b6bbf) finds a linear combination of features that best separates the classes in a data set by projecting the data onto a lower-dimensional space that maximizes the separation between the classes. The algorithm searches for a set of linear discriminants that maximize the ratio of between-class variance to within-class variance by evaluating directions in the feature space that best separate the different classes of data. LDA assumes that the data has a Gaussian distribution and that the covariance matrices of the different classes are equal, in addition to the data being linearly separable by the presence of a linear decision boundary can accurately classify the different classes.
 |
+| [Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) is a wrapper-style feature selection algorithm which searches for a subset of features by starting with all features in the training data set and successfully removing features until the desired number remains. The algorithm repeatedly fits a given machine learning algorithm used in the core of the model, ranks features by importance, discards the least important features, and re-fits the model. Features are scored either using importance scores relevant to the provided machine learning model or by applying statistical methods.
+|
 | **[A]** The linear discriminant analysis model from the  <mark style="background-color: #CCECFF">**MASS**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
 | **[B]** The model does not contain any hyperparameter.
@@ -1495,6 +1499,8 @@ LDA_RFE_Test_ROC <- roc(response = LDA_RFE_Test$LDA_RFE_Observed,
 ###  1.5.9 Naive Bayes With RFE (NB_RFE)
 |
 | [Naive Bayes Classifier](https://www.jstor.org/stable/2682766) categorizes instances by applying Bayes Theorem in determining posterior probabilities as conditioned by the likelihood of features, and prior probabilities pertaining to both events and features. The algorithm naively assumes independence between features and assigns the same weight (degree of significance) to all given features.
+|
+| [Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) is a wrapper-style feature selection algorithm which searches for a subset of features by starting with all features in the training data set and successfully removing features until the desired number remains. The algorithm repeatedly fits a given machine learning algorithm used in the core of the model, ranks features by importance, discards the least important features, and re-fits the model. Features are scored either using importance scores relevant to the provided machine learning model or by applying statistical methods.
 |
 | **[A]** The naive bayes model from the  <mark style="background-color: #CCECFF">**klaR**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1573,6 +1579,8 @@ NB_RFE_Test_ROC <- roc(response = NB_RFE_Test$NB_RFE_Observed,
 |
 | [Logistic Regression](http://dx.doi.org/10.2139/ssrn.360300) models the relationship between the probability of an event (among two outcome levels) by having the log-odds of the event be a linear combination of a set of predictors weighted by their respective parameter estimates. The parameters are estimated via maximum likelihood estimation by testing different values through multiple iterations to optimize for the best fit of log odds. All of these iterations produce the log likelihood function, and logistic regression seeks to maximize this function to find the best parameter estimates. Given the optimal parameters, the conditional probabilities for each observation can be calculated, logged, and summed together to yield a predicted probability.
 |
+| [Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) is a wrapper-style feature selection algorithm which searches for a subset of features by starting with all features in the training data set and successfully removing features until the desired number remains. The algorithm repeatedly fits a given machine learning algorithm used in the core of the model, ranks features by importance, discards the least important features, and re-fits the model. Features are scored either using importance scores relevant to the provided machine learning model or by applying statistical methods.
+|
 | **[A]** The logistic regression model from the  <mark style="background-color: #CCECFF">**stats**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
 | **[B]** The model does not contain any hyperparameter.
@@ -1646,6 +1654,8 @@ LR_RFE_Test_ROC <- roc(response = LR_RFE_Test$LR_RFE_Observed,
 ###  1.5.11 Support Vector Machine - Radial Basis Function Kernel With RFE (SVM_R_RFE)
 |
 | [Support Vector Machine](http://www.cs.cmu.edu/~pakyan/compbio/references/Drucker_NIPS_1996.pdf) plots each observation in an N-dimensional space corresponding to the number of features in the data set and finds a hyperplane that maximally separates the different classes by a maximally large margin (which is defined as the distance between the hyperplane and the closest data points from each class). The algorithm applies kernel transformation by mapping non-linearly separable data using the similarities between the points in a high-dimensional feature space for improved discrimination.
+|
+| [Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) is a wrapper-style feature selection algorithm which searches for a subset of features by starting with all features in the training data set and successfully removing features until the desired number remains. The algorithm repeatedly fits a given machine learning algorithm used in the core of the model, ranks features by importance, discards the least important features, and re-fits the model. Features are scored either using importance scores relevant to the provided machine learning model or by applying statistical methods.
 |
 | **[A]** The support vector machine (radial basis function kernel) model from the  <mark style="background-color: #CCECFF">**kernlab**</mark> package was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1731,6 +1741,8 @@ SVM_R_RFE_Test_ROC <- roc(response = SVM_R_RFE_Test$SVM_R_RFE_Observed,
 ###  1.5.12 K-Nearest Neighbors With RFE (KNN_RFE)
 |
 | [K-Nearest Neighbors](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) works on the similarity principle which assumes that every data point falling in near to each other belong to the same class. The algorithm therefore assigns an unclassified sample point the classification of the nearest of a set of previously classified points.
+|
+| [Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) is a wrapper-style feature selection algorithm which searches for a subset of features by starting with all features in the training data set and successfully removing features until the desired number remains. The algorithm repeatedly fits a given machine learning algorithm used in the core of the model, ranks features by importance, discards the least important features, and re-fits the model. Features are scored either using importance scores relevant to the provided machine learning model or by applying statistical methods.
 |
 | **[A]** The k-nearest neighbors model was implemented with recursive feature elimination through the <mark style="background-color: #CCECFF">**caret**</mark> package. 
 |
@@ -1984,9 +1996,9 @@ print(ROCCurveAUC_Summary, row.names=FALSE)
 | **[Article]** [Generalized Linear Model](https://support.bccvl.org.au/support/solutions/articles/6000083213-generalized-linear-model) by BCCVL Team
 | **[Article]** [Introduction to Support Vector Machines](https://www.geeksforgeeks.org/introduction-to-support-vector-machines-svm/) by Geeks for Geeks Team
 | **[Article]** [Support Vector Machines: A Simple Explanation](https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html) by Noel Bambrick
+| **[Publication]** [Enhanced Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) by Xuewen Chen and Jong Cheol Jeong (International Conference on Machine Learning and Applications (ICMLA))
 | **[Publication]** [Bagging Predictors ](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) by Leo Breiman (Machine Learning)
 | **[Publication]** [The Use of Multiple Measurements in Taxonomic Problems](https://www.semanticscholar.org/paper/THE-USE-OF-MULTIPLE-MEASUREMENTS-IN-TAXONOMIC-Fisher/ab21376e43ac90a4eafd14f0f02a0c87502b6bbf) by Ronald Fisher (Annals of Human Genetics)
-| **[Publication]** [Enhanced Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) by Xuewen Chen and Jong Cheol Jeong (International Conference on Machine Learning and Applications (ICMLA))
 | **[Publication]** [The Origins of Logistic Regression](http://dx.doi.org/10.2139/ssrn.360300) by JS Cramer (Econometrics eJournal)
 | **[Publication]** [Who Discovered Bayes's Theorem?](https://www.jstor.org/stable/2682766) by Stephen Stigler (The American Statistician)
 | **[Publication]** [Nearest Neighbor Pattern Classification](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) by T Cover and P Hart (Transactions of Information Theory)
