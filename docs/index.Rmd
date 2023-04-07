@@ -1986,6 +1986,7 @@ print(ROCCurveAUC_Summary, row.names=FALSE)
 | **[Article]** [Support Vector Machines: A Simple Explanation](https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html) by Noel Bambrick
 | **[Publication]** [Bagging Predictors ](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) by Leo Breiman (Machine Learning)
 | **[Publication]** [The Use of Multiple Measurements in Taxonomic Problems](https://www.semanticscholar.org/paper/THE-USE-OF-MULTIPLE-MEASUREMENTS-IN-TAXONOMIC-Fisher/ab21376e43ac90a4eafd14f0f02a0c87502b6bbf) by Ronald Fisher (Annals of Human Genetics)
+| **[Publication]** [Enhanced Recursive Feature Elimination](https://ieeexplore.ieee.org/document/4457268) by Xuewen Chen and Jong Cheol Jeong (International Conference on Machine Learning and Applications (ICMLA))
 | **[Publication]** [The Origins of Logistic Regression](http://dx.doi.org/10.2139/ssrn.360300) by JS Cramer (Econometrics eJournal)
 | **[Publication]** [Who Discovered Bayes's Theorem?](https://www.jstor.org/stable/2682766) by Stephen Stigler (The American Statistician)
 | **[Publication]** [Nearest Neighbor Pattern Classification](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) by T Cover and P Hart (Transactions of Information Theory)
