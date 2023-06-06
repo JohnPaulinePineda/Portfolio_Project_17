@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=15, fig.height=10)
 ```
 # **1. Table of Contents**
 |
-| This document implements recursive feature elimination for selecting informative predictors using various helpful packages in <mark style="background-color: #CCECFF">**R**</mark>.  
+| This project implements **Recursive Feature Elimination** in selecting informative predictors for a modelling problem using the **Random Forest**, **Linear Discriminant Analysis**, **Naive Bayes**, **Logistic Regression**, **Support Vector Machine** and **K-Nearest Neighbors** model structures in <mark style="background-color: #CCECFF">**R**</mark>. The resulting predictions derived from the candidate models applying **Recursive Feature Elimination** were evaluated in terms of their discrimination power using the receiver operating characteristic (ROC) curve area under the curve (AUC) metric. The ROC AUC values were compared to those of the baseline models which made use of the full data without any form of feature selection, or implemented a model-specific feature selection process.
 |
 | Feature selection is the process of reducing the number of input variables by eliminating redundant or unimportant features and narrowing down the set of features to those most relevant to the machine learning approach, resulting to simpler explainable models, shorter training times due to a more precise subset of features, reduction of variance, increase in precision estimates and more robust solution against the curse of high dimensionality. The algorithms applied in this study (mostly contained in the <mark style="background-color: #CCECFF">**caret**</mark> package) are wrapper feature selection methods which attempt to consider the task of selecting feature subsets as a search problem, whereby their quality is assessed with the preparation, evaluation, and comparison between different feature combinations.
 |
@@ -1831,29 +1831,53 @@ KNN_RFE_Test_ROC <- roc(response = KNN_RFE_Test$KNN_RFE_Observed,
 | Model performance comparison:
 |
 | **[A]** Models which applied recursive feature elimination to select a subset of informative predictors performed better than those which utilized the full set of predictors.
-|      **[A.1]** RF: Random Forest (<mark style="background-color: #CCECFF">**randomForest**</mark> package)
-|             **[A.1.1]** RF_FULL: Cross-Validation ROC Curve AUC = 0.78268, Test ROC Curve AUC = 0.79803 
-|             **[A.1.2]** RF_RFE: Cross-Validation ROC Curve AUC = 0.81534, Test ROC Curve AUC = 0.84201  
-|      **[A.2]** LDA: Linear Discriminant Analysis (<mark style="background-color: #CCECFF">**MASS**</mark> package)
-|             **[A.2.1]** LDA_FULL: Cross-Validation ROC Curve AUC = 0.80151, Test ROC Curve AUC = 0.77199 
-|             **[A.2.2]** LDA_RFE: Cross-Validation ROC Curve AUC = 0.83569, Test ROC Curve AUC = 0.85301 
-|      **[A.3]** NB: Naive Bayes (<mark style="background-color: #CCECFF">**klaR**</mark> package)
-|             **[A.3.1]** NB_FULL: Cross-Validation ROC Curve AUC = 0.73904, Test ROC Curve AUC = 0.68055 
-|             **[A.3.2]** NB_RFE: Cross-Validation ROC Curve AUC = 0.76825, Test ROC Curve AUC = 0.75231 
-|      **[A.4]** LR: Logistic Regression (<mark style="background-color: #CCECFF">**stats**</mark> package)
-|             **[A.4.1]** LR_FULL: Cross-Validation ROC Curve AUC = 0.70733, Test ROC Curve AUC = 0.77199 
-|             **[A.4.2]** LR_RFE: Cross-Validation ROC Curve AUC = 0.80296, Test ROC Curve AUC = 0.86921 
-|      **[A.5]** SVM_R: Support Vector Machine - Radial Basis Function Kernel (<mark style="background-color: #CCECFF">**kernlab**</mark> package)
-|             **[A.5.1]** SVM_R_FULL: Cross-Validation ROC Curve AUC = 0.85690, Test ROC Curve AUC = 0.82060 
-|             **[A.5.2]** SVM_R_RFE: Cross-Validation ROC Curve AUC = 0.84155, Test ROC Curve AUC = 0.85995 
-|      **[A.6]** KNN: K-Nearest Neighbors (<mark style="background-color: #CCECFF">**caret**</mark> package)
-|             **[A.6.1]** KNN_FULL: Cross-Validation ROC Curve AUC = 0.79886, Test ROC Curve AUC = 0.79167 
-|             **[A.6.2]** KNN_RFE: Cross-Validation ROC Curve AUC = 0.79215, Test ROC Curve AUC = 0.84143 
+|      **[A.1]** **RF: Random Forest** (<mark style="background-color: #CCECFF">**randomForest**</mark> package)
+|             **[A.1.1]** **RF_FULL (Random Forest Without Recursive Feature Elimination)**  
+|                      **[A.1.1.1]** Cross-Validation ROC Curve AUC = 0.78268
+|                      **[A.1.1.2]** Test ROC Curve AUC = 0.79803
+|             **[A.1.2]** **RF_RFE (Random Forest With Recursive Feature Elimination)**  
+|                      **[A.1.2.1]** Cross-Validation ROC Curve AUC = 0.81534
+|                      **[A.1.2.2]** Test ROC Curve AUC = 0.84201
+|      **[A.2]** **LDA: Linear Discriminant Analysis** (<mark style="background-color: #CCECFF">**MASS**</mark> package)
+|             **[A.2.1]** **LDA_FULL (Linear Discriminant Analysis Without Recursive Feature Elimination)**
+|                      **[A.2.1.1]** Cross-Validation ROC Curve AUC = 0.80151
+|                      **[A.2.1.2]** Test ROC Curve AUC = 0.77199
+|             **[A.2.2]** **LDA_RFE (Linear Discriminant Analysis With Recursive Feature Elimination)**
+|                      **[A.2.2.1]** Cross-Validation ROC Curve AUC = 0.83569
+|                      **[A.2.2.2]** Test ROC Curve AUC = 0.85301
+|      **[A.3]** **NB: Naive Bayes** (<mark style="background-color: #CCECFF">**klaR**</mark> package)
+|             **[A.3.1]** **NB_FULL (Naive Bayes Without Recursive Feature Elimination)**   
+|                      **[A.3.1.1]** Cross-Validation ROC Curve AUC = 0.73904
+|                      **[A.3.1.2]** Test ROC Curve AUC = 0.68055
+|             **[A.3.2]** **NB_RFE (Naive Bayes With Recursive Feature Elimination)**  
+|                      **[A.3.2.1]** Cross-Validation ROC Curve AUC = 0.76825
+|                      **[A.3.2.2]** Test ROC Curve AUC = 0.75231
+|      **[A.4]** **LR: Logistic Regression** (<mark style="background-color: #CCECFF">**stats**</mark> package)
+|             **[A.4.1]** **LR_FULL (Logistic Regression Without Recursive Feature Elimination)**  
+|                      **[A.4.1.1]** Cross-Validation ROC Curve AUC = 0.70733
+|                      **[A.4.1.2]** Test ROC Curve AUC = 0.77199
+|             **[A.4.2]** **LR_RFE (Logistic Regression With Recursive Feature Elimination)**
+|                      **[A.4.2.1]** Cross-Validation ROC Curve AUC = 0.80296
+|                      **[A.4.2.2]** Test ROC Curve AUC = 0.86921
+|      **[A.5]** **SVM_R: Support Vector Machine - Radial Basis Function Kernel** (<mark style="background-color: #CCECFF">**kernlab**</mark> package)
+|             **[A.5.1]** **SVM_R_FULL (Support Vector Machine - Radial Basis Function Kernel Without Recursive Feature Elimination)** 
+|                      **[A.5.1.1]** Cross-Validation ROC Curve AUC = 0.85690
+|                      **[A.5.1.2]** Test ROC Curve AUC = 0.82060
+|             **[A.5.2]** **SVM_R_RFE (Support Vector Machine - Radial Basis Function Kernel With Recursive Feature Elimination)** 
+|                      **[A.5.2.1]** Cross-Validation ROC Curve AUC = 0.84155
+|                      **[A.5.2.2]** Test ROC Curve AUC = 0.85995
+|      **[A.6]** **KNN: K-Nearest Neighbors** (<mark style="background-color: #CCECFF">**caret**</mark> package)
+|             **[A.6.1]** **KNN_FULL (K-Nearest Neighbors Without Recursive Feature Elimination)**
+|                      **[A.6.1.1]** Cross-Validation ROC Curve AUC = 0.79886
+|                      **[A.6.1.2]** Test ROC Curve AUC = 0.79167
+|             **[A.6.2]** **KNN_RFE (K-Nearest Neighbors With Recursive Feature Elimination)**
+|                      **[A.6.2.1]** Cross-Validation ROC Curve AUC = 0.79215
+|                      **[A.6.2.2]** Test ROC Curve AUC = 0.84143
 |
 | **[B]** The models applied with recursive feature elimination which demonstrated the best and most consistent ROC Curve AUC metrics are as follows:
-|      **[B.1]** SVM_R_RFE: Support Vector Machine - Radial Basis Function Kernel (<mark style="background-color: #CCECFF">**kernlab**</mark> package)
-|      **[B.2]** LDA_RFE: Linear Discriminant Analysis (<mark style="background-color: #CCECFF">**MASS**</mark> package)
-|      **[B.3]** RF_RFE: Random Forest (<mark style="background-color: #CCECFF">**randomForest**</mark> package)
+|      **[B.1]** **SVM_R_RFE: Support Vector Machine - Radial Basis Function Kernel** (<mark style="background-color: #CCECFF">**kernlab**</mark> package)
+|      **[B.2]** **LDA_RFE: Linear Discriminant Analysis** (<mark style="background-color: #CCECFF">**MASS**</mark> package)
+|      **[B.3]** **RF_RFE: Random Forest** (<mark style="background-color: #CCECFF">**randomForest**</mark> package)
 |
 | **[C]** The most informative predictors consistently identified based from recursive feature elimination were as follows:
 |      **[C.1]** <span style="color: #FF0000">MMP10</span> variable (numeric)
