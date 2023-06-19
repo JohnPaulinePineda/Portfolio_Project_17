@@ -36,6 +36,9 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=15, fig.height=10)
 |      **[B.2]** 127/128 predictors = All remaining variables (3/127 factor + 124/127 numeric)
 |     
 | 
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.1, warning=FALSE, message=FALSE}
 ##################################
 # Loading R libraries
@@ -131,6 +134,9 @@ PDA <- Alzheimer_Train
   row.names=NULL)
 )
 ```
+
+</details>
+
 ##  1.2 Data Quality Assessment
 |
 | Data quality assessment:
@@ -145,6 +151,10 @@ PDA <- Alzheimer_Train
 |
 | **[D]** No high skewness observed for any variable with Skewness>3 or Skewness<(-3).
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.2, warning=FALSE, message=FALSE}
 ##################################
 # Loading dataset
@@ -363,6 +373,9 @@ if (length(names(DQA.Predictors.Numeric))==0) {
 }
 
 ```
+
+</details>
+
 ##  1.3 Data Preprocessing
 
 ###  1.3.1 Outlier
@@ -377,6 +390,10 @@ if (length(names(DQA.Predictors.Numeric))==0) {
 |      **[A.5]** <span style="color: #FF0000">MCP_2</span> variable (21 outliers detected)
 |      **[A.6]** <span style="color: #FF0000">Prostatic_Acid_Phospatase</span> variable (10 outliers detected)
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.3.1, warning=FALSE, message=FALSE, fig.width=15, fig.height=3}
 ##################################
 # Loading dataset
@@ -429,6 +446,8 @@ dim(DPA.Predictors.Numeric)
 
 ```
 
+</details>
+
 ###  1.3.2 Zero and Near-Zero Variance
 |
 | Zero and near-zero variance data assessment:
@@ -437,6 +456,10 @@ dim(DPA.Predictors.Numeric)
 |
 | **[B]** No low variance noted for any variable using a preprocessing summary from the <mark style="background-color: #CCECFF">**caret**</mark> package. The <span style="color: #0000FF">nearZeroVar</span> method using both the <span style="color: #0000FF">freqCut</span> and <span style="color: #0000FF">uniqueCut</span> criteria set at 95/5 and 10, respectively, were applied on the dataset.
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.3.2, warning=FALSE, message=FALSE}
 ##################################
 # Loading dataset
@@ -498,12 +521,18 @@ if ((nrow(DPA_LowVariance[DPA_LowVariance$nzv,]))==0){
 
 ```
 
+</details>
+
 ###  1.3.3 Collinearity
 |
 | High collinearity data assessment:
 |
 | **[A]** No high correlation > 95% were noted for any variable pair as confirmed using the preprocessing summaries from the <mark style="background-color: #CCECFF">**caret**</mark> and <mark style="background-color: #CCECFF">**lares**</mark> packages.
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.3.3, warning=FALSE, message=FALSE}
 ##################################
 # Loading dataset
@@ -599,12 +628,18 @@ if (DPA_HighlyCorrelatedCount > 0) {
 
 ```
 
+</details>
+
 ###  1.3.4 Linear Dependencies
 |
 | Linear dependency data assessment:
 |
 | **[A]** No linear dependencies noted for any subset of variables using the preprocessing summary from the <mark style="background-color: #CCECFF">**caret**</mark> package applying the <span style="color: #0000FF">findLinearCombos</span> method which utilizes the QR decomposition of a matrix to enumerate sets of linear combinations (if they exist). 
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.3.4, warning=FALSE, message=FALSE}
 ##################################
 # Loading dataset
@@ -681,6 +716,8 @@ if (DPA_LinearlyDependentCount > 0) {
 
 ```
 
+</details>
+
 ###  1.3.5 Pre-Processed Dataset
 | Preliminary dataset assessment:
 |
@@ -701,6 +738,10 @@ if (DPA_LinearlyDependentCount > 0) {
 |      **[C.4]** No predictors removed due to high correlation
 |      **[C.5]** No predictors removed due to linear dependencies
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.3.7, warning=FALSE, message=FALSE}
 ##################################
 # Creating the pre-modelling
@@ -745,6 +786,8 @@ dim(PMA_PreModelling_Test)
 
 ```
 
+</details>
+
 ##  1.4 Data Exploration
 |
 | Exploratory data analysis:
@@ -775,6 +818,10 @@ dim(PMA_PreModelling_Test)
 |      **[B.1]** <span style="color: #FF0000">E2</span> variable (factor)
 |      **[B.2]** <span style="color: #FF0000">E4</span> variable (factor)
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.4, warning=FALSE, message=FALSE}
 ##################################
 # Loading dataset
@@ -852,6 +899,8 @@ EDA.Bar.Source.FactorVar.Prop <- rbind(EDA.PropTable.Function("E2"),
 
 ```
 
+</details>
+
 ##  1.5 Recursive Feature Elimination (RFE)
 
 ###  1.5.1 Random Forest Without RFE (RF_FULL)
@@ -877,6 +926,10 @@ EDA.Bar.Source.FactorVar.Prop <- rbind(EDA.PropTable.Function("E2"),
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.79803
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.1, warning=FALSE, message=FALSE}
 ##################################
 # Converting all predictors to numeric
@@ -997,6 +1050,8 @@ RF_FULL_Test_ROC <- roc(response = RF_FULL_Test$RF_FULL_Observed,
 
 ```
 
+</details>
+
 ###  1.5.2 Linear Discriminant Analysis Without RFE (LDA_FULL)
 |
 | [Linear Discriminant Analysis](https://www.semanticscholar.org/paper/THE-USE-OF-MULTIPLE-MEASUREMENTS-IN-TAXONOMIC-Fisher/ab21376e43ac90a4eafd14f0f02a0c87502b6bbf) finds a linear combination of features that best separates the classes in a data set by projecting the data onto a lower-dimensional space that maximizes the separation between the classes. The algorithm searches for a set of linear discriminants that maximize the ratio of between-class variance to within-class variance by evaluating directions in the feature space that best separate the different classes of data. LDA assumes that the data has a Gaussian distribution and that the covariance matrices of the different classes are equal, in addition to the data being linearly separable by the presence of a linear decision boundary can accurately classify the different classes.
@@ -1014,6 +1069,10 @@ RF_FULL_Test_ROC <- roc(response = RF_FULL_Test$RF_FULL_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.77199
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.2, warning=FALSE, message=FALSE}
 ##################################
 # Running the linear discriminant analysis model
@@ -1057,6 +1116,8 @@ LDA_FULL_Test_ROC <- roc(response = LDA_FULL_Test$LDA_FULL_Observed,
 
 ```
 
+</details>
+
 ###  1.5.3 Naive Bayes Without RFE (NB_FULL)
 |
 | [Naive Bayes Classifier](https://www.jstor.org/stable/2682766) categorizes instances by applying Bayes Theorem in determining posterior probabilities as conditioned by the likelihood of features, and prior probabilities pertaining to both events and features. The algorithm naively assumes independence between features and assigns the same weight (degree of significance) to all given features.
@@ -1077,6 +1138,10 @@ LDA_FULL_Test_ROC <- roc(response = LDA_FULL_Test$LDA_FULL_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.68055
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.3, warning=FALSE, message=FALSE}
 ##################################
 # Running the naive bayes model
@@ -1125,6 +1190,8 @@ NB_FULL_Test_ROC <- roc(response = NB_FULL_Test$NB_FULL_Observed,
 
 ```
 
+</details>
+
 ###  1.5.4 Logistic Regression Without RFE (LR_FULL)
 |
 | [Logistic Regression](http://dx.doi.org/10.2139/ssrn.360300) models the relationship between the probability of an event (among two outcome levels) by having the log-odds of the event be a linear combination of a set of predictors weighted by their respective parameter estimates. The parameters are estimated via maximum likelihood estimation by testing different values through multiple iterations to optimize for the best fit of log odds. All of these iterations produce the log likelihood function, and logistic regression seeks to maximize this function to find the best parameter estimates. Given the optimal parameters, the conditional probabilities for each observation can be calculated, logged, and summed together to yield a predicted probability.
@@ -1147,6 +1214,10 @@ NB_FULL_Test_ROC <- roc(response = NB_FULL_Test$NB_FULL_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.77199
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.4, warning=FALSE, message=FALSE}
 ##################################
 # Running the logistic regression model
@@ -1208,6 +1279,8 @@ LR_FULL_Test_ROC <- roc(response = LR_FULL_Test$LR_FULL_Observed,
 
 ```
 
+</details>
+
 ###  1.5.5 Support Vector Machine - Radial Basis Function Kernel Without RFE (SVM_R_FULL)
 |
 | [Support Vector Machine](http://www.cs.cmu.edu/~pakyan/compbio/references/Drucker_NIPS_1996.pdf) plots each observation in an N-dimensional space corresponding to the number of features in the data set and finds a hyperplane that maximally separates the different classes by a maximally large margin (which is defined as the distance between the hyperplane and the closest data points from each class). The algorithm applies kernel transformation by mapping non-linearly separable data using the similarities between the points in a high-dimensional feature space for improved discrimination.
@@ -1227,6 +1300,10 @@ LR_FULL_Test_ROC <- roc(response = LR_FULL_Test$LR_FULL_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.82060
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.5, warning=FALSE, message=FALSE}
 ##################################
 # Running the support vector machine (radial basis function kernel) model
@@ -1276,6 +1353,8 @@ SVM_R_FULL_Test_ROC <- roc(response = SVM_R_FULL_Test$SVM_R_FULL_Observed,
 
 ```
 
+</details>
+
 ###  1.5.6 K-Nearest Neighbors Without RFE (KNN_FULL)
 |
 | [K-Nearest Neighbors](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) works on the similarity principle which assumes that every data point falling in near to each other belong to the same class. The algorithm therefore assigns an unclassified sample point the classification of the nearest of a set of previously classified points.
@@ -1294,6 +1373,10 @@ SVM_R_FULL_Test_ROC <- roc(response = SVM_R_FULL_Test$SVM_R_FULL_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.79167
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.6, warning=FALSE, message=FALSE}
 ##################################
 # Running the k-nearest neighbors model
@@ -1343,6 +1426,8 @@ KNN_FULL_Test_ROC <- roc(response = KNN_FULL_Test$KNN_FULL_Observed,
 
 ```
 
+</details>
+
 ###  1.5.7 Random Forest With RFE (RF_RFE)
 |
 | [Random Forest](https://link.springer.com/content/pdf/10.1007/BF00058655.pdf) is an ensemble learning method made up of a large set of small decision trees called estimators, with each producing its own prediction. The random forest model aggregates the predictions of the estimators to produce a more accurate prediction. The algorithm involves bootstrap aggregating (where smaller subsets of the training data are repeatedly subsampled with replacement), random subspacing (where a subset of features are sampled and used to train each individual estimator), estimator training (where unpruned decision trees are formulated for each estimator) and inference by aggregating the predictions of all estimators.
@@ -1369,6 +1454,10 @@ KNN_FULL_Test_ROC <- roc(response = KNN_FULL_Test$KNN_FULL_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.84201
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.7, warning=FALSE, message=FALSE}
 ##################################
 # Running the random forest model
@@ -1421,6 +1510,8 @@ RF_RFE_Test_ROC <- roc(response = RF_RFE_Test$RF_RFE_Observed,
 
 ```
 
+</details>
+
 ###  1.5.8 Linear Discriminant Analysis With RFE (LDA_RFE)
 |
 | [Linear Discriminant Analysis](https://www.semanticscholar.org/paper/THE-USE-OF-MULTIPLE-MEASUREMENTS-IN-TAXONOMIC-Fisher/ab21376e43ac90a4eafd14f0f02a0c87502b6bbf) finds a linear combination of features that best separates the classes in a data set by projecting the data onto a lower-dimensional space that maximizes the separation between the classes. The algorithm searches for a set of linear discriminants that maximize the ratio of between-class variance to within-class variance by evaluating directions in the feature space that best separate the different classes of data. LDA assumes that the data has a Gaussian distribution and that the covariance matrices of the different classes are equal, in addition to the data being linearly separable by the presence of a linear decision boundary can accurately classify the different classes.
@@ -1446,6 +1537,10 @@ RF_RFE_Test_ROC <- roc(response = RF_RFE_Test$RF_RFE_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.85301
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.8, warning=FALSE, message=FALSE}
 ##################################
 # Running the linear discriminant analysis model
@@ -1498,6 +1593,8 @@ LDA_RFE_Test_ROC <- roc(response = LDA_RFE_Test$LDA_RFE_Observed,
 
 ```
 
+</details>
+
 ###  1.5.9 Naive Bayes With RFE (NB_RFE)
 |
 | [Naive Bayes Classifier](https://www.jstor.org/stable/2682766) categorizes instances by applying Bayes Theorem in determining posterior probabilities as conditioned by the likelihood of features, and prior probabilities pertaining to both events and features. The algorithm naively assumes independence between features and assigns the same weight (degree of significance) to all given features.
@@ -1526,6 +1623,10 @@ LDA_RFE_Test_ROC <- roc(response = LDA_RFE_Test$LDA_RFE_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.75231
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.9, warning=FALSE, message=FALSE}
 ##################################
 # Running the naive bayes model
@@ -1577,6 +1678,8 @@ NB_RFE_Test_ROC <- roc(response = NB_RFE_Test$NB_RFE_Observed,
 
 ```
 
+</details>
+
 ###  1.5.10 Logistic Regression With RFE (LR_RFE)
 |
 | [Logistic Regression](http://dx.doi.org/10.2139/ssrn.360300) models the relationship between the probability of an event (among two outcome levels) by having the log-odds of the event be a linear combination of a set of predictors weighted by their respective parameter estimates. The parameters are estimated via maximum likelihood estimation by testing different values through multiple iterations to optimize for the best fit of log odds. All of these iterations produce the log likelihood function, and logistic regression seeks to maximize this function to find the best parameter estimates. Given the optimal parameters, the conditional probabilities for each observation can be calculated, logged, and summed together to yield a predicted probability.
@@ -1602,6 +1705,10 @@ NB_RFE_Test_ROC <- roc(response = NB_RFE_Test$NB_RFE_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.86921
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.10, warning=FALSE, message=FALSE}
 ##################################
 # Running the logistic regression model
@@ -1653,6 +1760,8 @@ LR_RFE_Test_ROC <- roc(response = LR_RFE_Test$LR_RFE_Observed,
 
 ```
 
+</details>
+
 ###  1.5.11 Support Vector Machine - Radial Basis Function Kernel With RFE (SVM_R_RFE)
 |
 | [Support Vector Machine](http://www.cs.cmu.edu/~pakyan/compbio/references/Drucker_NIPS_1996.pdf) plots each observation in an N-dimensional space corresponding to the number of features in the data set and finds a hyperplane that maximally separates the different classes by a maximally large margin (which is defined as the distance between the hyperplane and the closest data points from each class). The algorithm applies kernel transformation by mapping non-linearly separable data using the similarities between the points in a high-dimensional feature space for improved discrimination.
@@ -1680,6 +1789,10 @@ LR_RFE_Test_ROC <- roc(response = LR_RFE_Test$LR_RFE_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.85995
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.11, warning=FALSE, message=FALSE}
 ##################################
 # Running the support vector machine (radial basis function kernel) model
@@ -1740,6 +1853,8 @@ SVM_R_RFE_Test_ROC <- roc(response = SVM_R_RFE_Test$SVM_R_RFE_Observed,
 
 ```
 
+</details>
+
 ###  1.5.12 K-Nearest Neighbors With RFE (KNN_RFE)
 |
 | [K-Nearest Neighbors](https://isl.stanford.edu/~cover/papers/transIT/0021cove.pdf) works on the similarity principle which assumes that every data point falling in near to each other belong to the same class. The algorithm therefore assigns an unclassified sample point the classification of the nearest of a set of previously classified points.
@@ -1766,6 +1881,10 @@ SVM_R_RFE_Test_ROC <- roc(response = SVM_R_RFE_Test$SVM_R_RFE_Observed,
 | **[E]** The independent test model performance of the final model is summarized as follows:
 |      **[E.1]** ROC Curve AUC = 0.84143
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.5.12, warning=FALSE, message=FALSE}
 ##################################
 # Running the k-nearest neighbors model
@@ -1825,6 +1944,8 @@ KNN_RFE_Test_ROC <- roc(response = KNN_RFE_Test$KNN_RFE_Observed,
 (KNN_RFE_Test_ROCCurveAUC <- auc(KNN_RFE_Test_ROC)[1])
 
 ```
+
+</details>
 
 ##  1.6 Model Evaluation Summary
 |
@@ -1886,6 +2007,10 @@ KNN_RFE_Test_ROC <- roc(response = KNN_RFE_Test$KNN_RFE_Observed,
 |      **[C.4]** <span style="color: #FF0000">PAI_1</span> variable (numeric)
 |      **[C.5]** <span style="color: #FF0000">GRO_alpha</span> variable (numeric)
 |
+|
+
+<details><summary><mark style="background-color: #000000;color: #FFFFFF">**Code Chunk | Output**</mark></summary>
+
 ```{r section_1.6, warning=FALSE, message=FALSE}
 ##################################
 # Consolidating all evaluation results
@@ -1957,6 +2082,8 @@ print(ROCCurveAUC_Summary, row.names=FALSE)
                            pch = 16,
                            cex = 2))
 ```
+
+</details>
 
 # **2. References**
 |
