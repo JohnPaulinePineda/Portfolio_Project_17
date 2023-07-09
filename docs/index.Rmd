@@ -1,5 +1,5 @@
 ---
-title: 'R : Selecting Informative Predictors Using Recursive Feature Elimination'
+title: 'Feature Selection : Selecting Informative Predictors Using Recursive Feature Elimination'
 author: "John Pauline Pineda"
 date: "December 19, 2022"
 output: 
